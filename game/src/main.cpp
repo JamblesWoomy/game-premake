@@ -53,7 +53,7 @@ bool GameUpdate()
 void GameDraw()
 {
     BeginDrawing();
-    ClearBackground(DARKGRAY);
+    ClearBackground(RED);
 
     DrawText("Hello Raylib!", 10, 10, 20, GetTextColor());
 

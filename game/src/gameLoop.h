@@ -22,5 +22,16 @@ Use this as a starting point or replace it with your code.
 
 */
 
-static constexpr int InitialWidth = 750;
-static constexpr int InitialHeight = 700;
+#pragma once
+#include "Spaceship.h"
+
+class Game {
+	public:
+		Game();
+		~Game();
+		void Draw();
+		void Update();
+		void HandleInput();
+	private:
+		Spaceship spaceship;
+}

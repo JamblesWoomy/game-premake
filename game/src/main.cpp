@@ -27,6 +27,8 @@ Use this as a starting point or replace it with your code.
 
 #include "game.h"   // an external header in this project
 #include "lib.h"	// an external header in the static lib project
+#include "Spaceship.h"
+#include "Spaceship.cpp"
 
 
 void GameInit()
@@ -64,12 +66,13 @@ void GameDraw()
 int main()
 {
     GameInit();
+    Spaceship spaceship;
 
     while (!WindowShouldClose())
     {
         if (!GameUpdate())
             break;
-
+        spaceship.Draw();
         GameDraw();
     }
     GameCleanup();

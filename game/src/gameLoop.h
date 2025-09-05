@@ -26,12 +26,13 @@ Use this as a starting point or replace it with your code.
 #include "Spaceship.h"
 
 class Game {
-	public:
-		Game();
-		~Game();
-		void Draw();
-		void Update();
-		void HandleInput();
-	private:
-		Spaceship spaceship;
-}
+public:
+	Game();
+	~Game();
+	void Draw();
+	void Update();
+	void HandleInput();
+private:
+	void DeleteInactiveLasers();
+	Spaceship spaceship;
+};

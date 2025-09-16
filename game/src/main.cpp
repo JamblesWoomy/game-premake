@@ -19,7 +19,7 @@ Use this as a starting point or replace it with your code.
 --  as being the original software.
 --
 --  3. This notice may not be removed or altered from any source distribution.
-
+ https://www.youtube.com/watch?v=TGo3Oxdpr5o&list=PLwR6ZGPvjVOSRywn9VCQ3yrRVruxzzuo9&index=7
 */
 
 #include "raylib.h"
@@ -27,13 +27,19 @@ Use this as a starting point or replace it with your code.
 
 #include "game.h"   // an external header in this project
 #include "lib.h"	// an external header in the static lib project
+#include "Spaceship.h"
+#include "Spaceship.cpp"
+#include "gameLoop.h"
+#include "gameLoop.cpp"
+#include "obstacle.h"
+#include "obstacle.cpp"
 
 
 void GameInit()
 {
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
-    InitWindow(InitialWidth, InitialHeight, "Example");
-    SetTargetFPS(144);
+    InitWindow(InitialWidth, InitialHeight, "GDP 204 Assessment 2");
+    SetTargetFPS(60);
 
     // load resources
 }
@@ -52,10 +58,11 @@ bool GameUpdate()
 
 void GameDraw()
 {
+    Color grey = { 29,29,27,255 };
     BeginDrawing();
-    ClearBackground(DARKGRAY);
+    ClearBackground(grey);
 
-    DrawText("Hello Raylib!", 10, 10, 20, GetTextColor());
+    //DrawText("Hello Raylib!", 10, 10, 20, GetTextColor());
 
     EndDrawing();
 }
@@ -63,15 +70,21 @@ void GameDraw()
 int main()
 {
     GameInit();
+    //Spaceship spaceship;
+    Game game;
+    Obstacle obstacle = Obstacle({ 100,100 });
 
     while (!WindowShouldClose())
     {
+        game.HandleInput();
+        game.Update();
         if (!GameUpdate())
             break;
-
+        game.Draw();
+        obstacle.Draw();
         GameDraw();
     }
     GameCleanup();
-
+    
     return 0;
 }
